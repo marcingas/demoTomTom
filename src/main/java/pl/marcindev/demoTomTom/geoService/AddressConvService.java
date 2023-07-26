@@ -1,16 +1,11 @@
 package pl.marcindev.demoTomTom.geoService;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
 import pl.marcindev.demoTomTom.entity.AddressConverterData;
-import pl.marcindev.demoTomTom.entity.Response;
-import reactor.core.publisher.Mono;
 
-import static pl.marcindev.demoTomTom.constants.AddressConvConstatnts.*;
+import static pl.marcindev.demoTomTom.constants.RouteSearchConstants.*;
 
 @Slf4j
 public class AddressConvService {
@@ -20,7 +15,7 @@ public class AddressConvService {
         this.webClient = webClient;
     }
 
-    public Response getLatLongFromAddress(AddressConverterData addressData) {
+    public String getAnswer(AddressConverterData addressData) {
         //    https://{baseURL}/search/{versionNumber}/geocode/{query}.{ext}?key={Your_API_Key}
         String query = addressData.getPostCode() + " " + addressData.getTown() + ", "
                 + addressData.getStreet() + " " + addressData.getNumber();
@@ -30,14 +25,11 @@ public class AddressConvService {
                 .toUriString();
         uri += "?key=" + KEY;
 
-       return webClient.get()
+      return webClient.get()
                 .uri(uri)
                 .retrieve()
-                .bodyToMono(Response.class)
-                .block();
-
-
-
+               .bodyToMono(String.class)
+               .block();
 
     }
 }
