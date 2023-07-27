@@ -1,16 +1,18 @@
 package pl.marcindev.demoTomTom.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import pl.marcindev.demoTomTom.geoService.Locations;
 @Getter
 @Setter
+@AllArgsConstructor
 public class LocationsConverter {
-    Locations locations1;
-    Locations locations2;
+    Locations locationsStart;
+    Locations locationsDest;
 
     @Override
     public String toString() {
-        return locations1 + "%" + locations2;
+        return locationsStart + ":" + locationsDest;
     }
 }
