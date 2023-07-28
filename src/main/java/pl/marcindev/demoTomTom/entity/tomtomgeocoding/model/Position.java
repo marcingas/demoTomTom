@@ -1,4 +1,4 @@
-package pl.marcindev.demoTomTom.entity;
+package pl.marcindev.demoTomTom.entity.tomtomgeocoding.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -10,14 +10,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Response {
-    @JsonProperty("lat")
-    private float lat;
-    @JsonProperty("lon")
-    private float lon;
+public class Position {
+    float lat;
+    float lon;
 
     @Override
     public String toString() {
-        return lat + ": " + lon;
+        return lat + "," + lon;
     }
 }
+

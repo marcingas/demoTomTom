@@ -1,4 +1,4 @@
-package pl.marcindev.demoTomTom.entity;
+package pl.marcindev.demoTomTom.entity.tomtomgeocoding.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddressConverterData {
+public class AddressData {
 
     private String postCode;
     private String town;
